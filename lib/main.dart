@@ -15,9 +15,14 @@ class Shashier extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cashier App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue[900]!),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF1E3A8A),
+          primary: const Color(0xFF1E3A8A),
+          surface: const Color(0xFFF1F5F9),
+        ),
+
         useMaterial3: true,
-        scaffoldBackgroundColor: Colors.grey[100],
+        scaffoldBackgroundColor: const Color(0xFFF1F5F9),
         //Font
         textTheme: GoogleFonts.poppinsTextTheme(
           Theme.of(context).textTheme,

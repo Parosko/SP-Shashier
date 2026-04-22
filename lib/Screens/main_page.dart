@@ -21,13 +21,42 @@ final List<Map<String, dynamic>> daftarMenu=const [
         foregroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            tooltip:'Keranjang',
+            icon: const Icon(Icons.receipt_long),
+            tooltip:'Bill',
             onPressed: () {
-            
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Bill ditekan')),
+              );
             },
-
           ),
+          IconButton(
+            icon: const Icon(Icons.bar_chart),
+            tooltip:'Statistik',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Statistik ditekan')),
+              );
+            },
+          ),
+          IconButton(
+            icon:const Icon(Icons.history),
+            tooltip:'Riwayat',
+            onPressed: (){
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Riwayat ditekan')),
+              );
+            }
+          ),
+          IconButton(
+            icon:const Icon(Icons.add_box_outlined),
+            tooltip:'Tambah Menu',
+            onPressed: (){
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Tambah Menu ditekan')),
+              );
+            }
+          )
+
         ]
       ),
       body: const Center(
