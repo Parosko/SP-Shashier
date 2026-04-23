@@ -38,6 +38,14 @@ class Shashier extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        //Drawer
+        drawerTheme: DrawerThemeData(
+          backgroundColor: const Color(0xFFF1F5F9),
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(0),
+          ),
+        )
       ),
       home: const MainPage(),
     );

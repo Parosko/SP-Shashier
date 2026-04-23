@@ -13,59 +13,96 @@ final List<Map<String, dynamic>> daftarMenu=const [
   ];
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Page'),
-        backgroundColor: Colors.blue[900],
-        foregroundColor: Colors.white,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.receipt_long),
-            tooltip:'Bill',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Bill ditekan')),
-              );
-            },
+Widget build(BuildContext context) {
+  return Scaffold(
+    drawer: Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          // Header 
+          DrawerHeader(
+            decoration: BoxDecoration(color: Color(0xff1E3A8A)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.store, color: Colors.white, size: 40),
+                SizedBox(height: 10),
+                Text(
+                  'Shashier',
+                  style: Theme.of(context).appBarTheme.titleTextStyle,
+                ),
+              ],
+            ),
           ),
-          IconButton(
-            icon: const Icon(Icons.bar_chart),
-            tooltip:'Statistik',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Statistik ditekan')),
-              );
-            },
-          ),
-          IconButton(
-            icon:const Icon(Icons.history),
-            tooltip:'Riwayat',
-            onPressed: (){
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Riwayat ditekan')),
-              );
-            }
-          ),
-          IconButton(
-            icon:const Icon(Icons.add_box_outlined),
-            tooltip:'Tambah Menu',
-            onPressed: (){
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Tambah Menu ditekan')),
-              );
-            }
-          )
-
-        ]
-      ),
-      body: const Center(
-        child: Text(
-          'Selamat datang di Main Page!',
-          style: TextStyle(fontSize: 20),
           
-        ),
+          // 2. PINDAHKAN TOMBOL-TOMBOL KAMU KE LISTTILE
+          ListTile(
+            leading: const Icon(Icons.receipt_long),
+            title: const Text('Bill / Tagihan'),
+            onTap: () {
+              Navigator.pop(context); 
+              _tampilkanPesan(context, 'Bill ditekan');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.bar_chart),
+            title: const Text('Statistik Penjualan'),
+            onTap: () {
+              Navigator.pop(context);
+              _tampilkanPesan(context, 'Statistik ditekan');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.history),
+            title: const Text('Riwayat Transaksi'),
+            onTap: () {
+              Navigator.pop(context);
+              _tampilkanPesan(context, 'Riwayat ditekan');
+            },
+          ),
+          const Divider(), // Garis pembatas
+          ListTile(
+            leading: const Icon(Icons.add_box_outlined),
+            title: const Text('Tambah Menu Baru'),
+            onTap: () {
+              Navigator.pop(context);
+              _tampilkanPesan(context, 'Tambah Menu ditekan');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Pengaturan'),
+            onTap: () {
+              Navigator.pop(context);
+              _tampilkanPesan(context, 'Pengaturan ditekan');
+            },
+          ),
+        ],
       ),
-    );
-  }
+    ),
+
+    appBar: AppBar(
+      title: Row(
+        children: const [
+          Icon(Icons.store, color: Colors.white),
+          SizedBox(width: 30),
+          Text(
+            'Shashier',
+          ),
+        ]
+      )
+    ),
+    
+    body: const Center(
+      child: Text('ma mangan ko', style: TextStyle(fontSize: 20)),
+    ),
+  );
+}
+
+// Function for click
+void _tampilkanPesan(BuildContext context, String pesan) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text(pesan)),
+  );
+}
 }
